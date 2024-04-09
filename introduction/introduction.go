@@ -7,6 +7,7 @@ import (
 	"unicode/utf8"
 ) //? to call print functions
 
+//! there must be just 1 main func in a file
 func main() {
 	var intNum int32 = 32767
 	intNum = intNum + 1
