@@ -1,39 +1,45 @@
 package main
+
 import "fmt"
 
 //* it creates a struct that gasEngine type
-type gasEngine struct{
-	mpg uint8
-	gallons uint8	
+type gasEngine struct {
+	mpg     uint8
+	gallons uint8
 	owner
 	//* we can directly use other struct inside a struct
 	int
 }
 
-type owner struct{
+type owner struct {
 	name string
 }
 
-type oilEngine struct{
-	mpo uint8
+type oilEngine struct {
+	mpo     uint8
 	gallons uint8
 }
 
-type electricEngine struct{
+type electricEngine struct {
 	mpkwh uint8
-	kwh uint8
+	kwh   uint8
 }
 
-type engine interface{
+type engine interface {
 	milesLeft() uint8
 }
 
-func (e oilEngine) milesLeft() uint8{
-	return e.gallons*e.mpo
+//* interface are used for struct that building different but has same purpose
+//* engine type includes milesLeft() method (same method name but different oil types)
+//* and we use engine type as a parameter in canMakeIt function
+//* it provide to use 1 functiom instead of 2 function each engine type
+
+func (e oilEngine) milesLeft() uint8 {
+	return e.gallons * e.mpo
 }
 
-func (e electricEngine) milesLeft() uint8{
-	return e.mpkwh*e.kwh
+func (e electricEngine) milesLeft() uint8 {
+	return e.mpkwh * e.kwh
 }
 
 //! There is a big difference between function and method in Go
@@ -41,27 +47,23 @@ func (e electricEngine) milesLeft() uint8{
 //! for example canMakeIt is a function because it depends nothing
 //! but milesLeft is a method, it can be used for just oilEngine and electricEngine types
 
-func canMakeIt(e engine,miles uint8){
-	if miles <=e.milesLeft() {
+func canMakeIt(e engine, miles uint8) {
+	if miles <= e.milesLeft() {
 		fmt.Println("You can make it there!")
-	}else{
+	} else {
 		fmt.Println("Need to fuel up first!")
 	}
 
 }
 
-
-func main(){
-	var myEngine gasEngine =gasEngine{25,15,owner{"Alex"},10}
-	fmt.Println(myEngine.gallons,myEngine.mpg,myEngine.owner,myEngine.name,myEngine.int)
+func main() {
+	var myEngine gasEngine = gasEngine{25, 15, owner{"Alex"}, 10}
+	fmt.Println(myEngine.gallons, myEngine.mpg, myEngine.owner, myEngine.name, myEngine.int)
 	//* it's kinda interesting
-	
+
 	//----------------------------------------------
 
-	var myEngine2 oilEngine = oilEngine{25,15}
-	canMakeIt(myEngine2,50)
-
-
-
+	var myEngine2 oilEngine = oilEngine{25, 15}
+	canMakeIt(myEngine2, 50)
 
 }
