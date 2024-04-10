@@ -1,5 +1,5 @@
 package main
-BURAYI ANLAMADIN TEKRAR ÇALIÞ
+
 import (
 	"fmt"
 	"sync"
