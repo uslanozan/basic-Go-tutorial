@@ -1,8 +1,8 @@
-package main
+package arrays
 
 import "fmt"
 
-func main() {
+func Main() {
 
 	intArr := [...]int32{1, 2, 3}
 	fmt.Println(intArr[0])

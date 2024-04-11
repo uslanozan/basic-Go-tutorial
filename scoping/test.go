@@ -1,12 +1,6 @@
-package test
+package scoping
 
-import "fmt"
-SCOPING ANLAMADIN ÇALIÞ
-
-func Test1() {
-	fmt.Println("Test1")
-}
-
-func test2() {
-	fmt.Println("test2")
+func main() {
+	Test1()
+	test2()
 }
