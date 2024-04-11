@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	var intSlice = []int{1, 2, 3}
@@ -16,6 +18,9 @@ func main() {
 func sumSlice[T int| float32|float64](slice []T) T{
 	var sum T
 	for _, v:= range slice{
+	//? we use v for adding operator but not using directly
+	//? to show that we can use _
+	//? it means, it won't use directly ??	
 		sum+=v
 	}
 	return sum
